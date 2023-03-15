@@ -84,34 +84,31 @@
     </div>
     <script>
         window.onload = function () {
-            // let res = getCode();
             function getCode() {
                 let arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
                 let str = '';
-                for (let i = 0; i < 6; i++) {
+                for (i = 0; i < 6; i++) {
                     let num = Math.round(Math.random() * (15 - 0) + 0);
                     str += arr[num];
                 }
                 return str;
             }
+            // 1、将随机获取的验证码，显示在页面中。
             document.querySelector('.code').innerHTML = getCode();
-            // 点击事件
-            document.querySelector('#linkbt').onclick = function() {
+
+            // 2、点击看不清按钮时，在次调用getCode()函数
+            document.querySelector('#linkbt').onclick = function () {
                 document.querySelector('.code').innerHTML = getCode();
             }
 
-            // 和用户输入的对比
+            // 3、和用户输入的验证码进行对比
             document.querySelector('#Button1').onclick = function () {
-                let code = document.querySelector('.code').innerHTML;
-                let inputCode = document.querySelector('#inputCode').value;
-                if(code != inputCode) {
-                    alert('您输入的验证码不正确');
+                let yzm = document.querySelector('.code').innerHTML; // 页面调用的验证码
+                let yh = document.querySelector('#inputCode').value; // 用户输入的验证码
+                if (yzm != yh) {
+                    alert('验证码输入错误！');
                     document.querySelector('#inputCode').value = '';
-                    return false;
-                }
-                if(code === inputCode) {
-                    alert('输入正确');
-                    document.querySelector('#inputCode').value = '';
+                    document.querySelector('.code').innerHTML = getCode();
                 }
             }
         }

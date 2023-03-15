@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>相册选择</title>
+    <style>
+        .one .two img{
+            width: 413px;
+            height: 406px;
+        }
+        .one .three img{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="one">
+        <div class="two">
+            <img src="./img/ju.jpg" alt="">
+        </div>
+        <div class="three">
+            <img src="./img/ju.jpg" alt="">
+            <img src="./img/ying.jpg" alt="">
+            <img src="./img/hu.jpg" alt="">
+            <img src="./img/bu.jpg" alt="">
+        </div>
+    </div>
+    <script>
+        let imgs = document.querySelectorAll('img');
+        for(let i=1; i<imgs.length; i++) {
+            imgs[i].onmouseover = function () {
+                // 把小图的src给大图的src
+                imgs[0].src = this.src;
+            }
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索框</title>
+    <style>
+        .content{
+            width: 500px;
+            margin: 40px auto;
+            /* border: 1px solid red; */
+        }
+        .search{
+            width: 400px;
+            overflow: hidden;
+            /* border: 1px solid red; */
+        }
+        .search input{
+            float: left;
+        }
+        #val{
+            height: 35px;
+            width: 300px;
+            padding-left: 10px;
+        }
+        #sub{
+            height: 40px;
+            width: 80px;
+            margin-left: 3px;
+            font-size: 20px;
+        }
+        .show{
+            width: 302px;
+            /* height: 00px; */
+            border: 1px solid #ccc;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="search">
+            <input type="text" id="val" placeholder="请输入课程名">
+            <input type="submit" id="sub">
+        </div>
+
+        <div class="show" id="show">
+
+        </div>
+    </div>
+
+    <script>
+        let arr = ['web前端精英特训班 980元','HTML核心技术 199元','CSS核心技术 299元','Vue核心技术 599元','CSS+HTML核心技术 299元','web前端在线商城 99元','JavaScript核心技术 399元','JavaScript高级技术 899元'];
+        let input = document.querySelector('#val');
+        let show = document.querySelector('.show');
+        
+        // onkeyup 事件会在键盘按键被松开时发生。
+        input.onkeyup = function() {
+            show.style.display = 'block';
+            let str = '';
+            arr.forEach(function(item) {
+                // indexOf() 方法返回值在字符串中第一次出现的位置。
+                // 如果未找到该值，则 indexOf() 方法返回 -1。
+                // item 是数组当中的值
+                let res = item.indexOf(input.value);
+                if(res != -1) {
+                    str += '<p>'+item+'</p>';
+                }
+            })
+            // console.log(str);
+            // 如果input.value为空或者str为false，给用户一个提示
+            if(!input.value || !str){
+                show.innerHTML = '<p>暂无结果</p>';
+            }else{
+                show.innerHTML = str;
+            }
+        }
+    </script>
+
+    <!-- <script>
+        let arr = ['web前端精英特训班 980元','HTML核心技术 199元','CSS核心技术 299元','Vue核心技术 599元','CSS+HTML核心技术 299元','web前端在线商城 99元','JavaScript核心技术 399元','JavaScript高级技术 899元'];
+        let input = document.querySelector('#val');
+        let show = document.querySelector('#show');
+        input.onkeyup = function() {
+            show.style.display = 'block';
+            let str = '';
+            arr.forEach(function(item) {
+                let res = item.indexOf(input.value);
+                if(res != -1) {
+                    str += '<p>'+item+'</p>';
+                }
+            })
+            if(input.value==='' || !str){
+                show.innerHTML = '<p>暂无结果</p>'
+            }else{
+                show.innerHTML = str;
+            }
+        }
+    </script> -->
+</body>
+</html>
