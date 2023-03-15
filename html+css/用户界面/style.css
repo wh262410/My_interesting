@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /*设置为wrap，那么项目就不会缩小，会自动换行*/
+    background: #161623;
+    min-height: 100vh;
+}
+/* 右下角的圆 */
+section::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#f00,#f0f);
+    clip-path: circle(30% at right 70%); /*30%将元素设置为圆形，在右边显示，70%的位置*/
+}
+/* 左上角的圆 */
+section::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#2196f3, #e91e63);
+    clip-path: circle(20% at left 10%);
+}
+.container{
+    position: relative;
+    z-index: 1;
+    display: flex; /*将元素转换为弹性盒子，自适应窗口，（这里将垂直显示的三个盒子变为水平显示）*/
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 40px 0;
+}
+.container .card{
+    position: relative;
+    width: 300px;
+    height: 400px;
+    background: rgba(255,255,255,0.05);
+    margin: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px); /*为当前元素后面被遮挡的元素添加模糊效果*/
+}
+.container .card .container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /*设置主轴方向，这里是元素从上到下排列*/
+    opacity: 0.5;
+}
+.container .card:hover .content{
+    opacity: 1;
+    transform: translateY(-20px);
+    transition: 0.5s;
+    transition-property:all;
+}
+.container .card .content .imgBx{
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 10px solid rgba(0, 0, 0, 0.25);
+}
+.container .card .content .imgBx img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /*该属性指定元素的内容应该如何去适应指定容器的宽度和高度*/
+}
+
+/* 图片下方文字 */
+.container .card .content .contentBx h3{
+    color: #fff;
+    text-transform: uppercase; /*文本都为大写字母*/
+    letter-spacing: 2px; /*增加字符间距*/
+    font-weight: 500;
+    font-size: 18px;
+    text-align: center;
+    margin: 20px 0 10px;
+    line-height: 1.1em;
+}
+.container .card .content .contentBx h3 span{
+    font-size: 12px;
+    font-weight: 300;
+}
+/* 下方三个小图标 */
+.container .card .sci{
+    position: absolute;
+    bottom: -35px;
+    display: flex;
+}
+.container .card .sci li{
+    list-style: none;
+    margin: 0 10px;
+    transform: translateY(40px);
+    transition: 0.5s;
+    opacity: 0;
+    transition-delay: calc(0.1s * var(--i));
+}
+.container .card:hover .sci li{
+    transform: translateY(0px);
+    opacity: 1;
+}
+.container .card .sci li a{
+    color: #fff;
+    font-size: 24px;
+}
+h2{
+    color: #fff;
+    text-align: center;
+}

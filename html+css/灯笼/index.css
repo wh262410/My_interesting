@@ -1,0 +1,61 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    background: black;
+    display: flex;
+}
+.box{
+    width: 300px;
+    height: 300px;
+    position: relative;
+    margin: auto;
+    animation: animate 4s linear infinite; /*animate：动画名称；linear：动画速度从头到尾是相同的；infinite：指定动画应该播放无限次*/
+    transform-style: preserve-3d; /*元素的子元素们是放在3d空间的*/
+}
+@keyframes animate{
+    0%{
+        transform: rotateX(-30deg) rotateY(0deg);
+    }
+    100%{
+        transform: rotateX(-30deg) rotateY(360deg);
+    }
+}
+.top{
+    width: 100px;
+    height: 100%;
+    background: #051515;
+    transform: rotateX(90deg) translateZ(150deg);
+    transform-style: preserve-3d;
+}
+.top::after{
+    display: block;
+    content: "";
+    width: 300px;
+    height: 300px;
+    background: red;
+    transform: translateZ(-450px);
+    filter: blur(20px); /*对图像应用模糊效果。较大的值将产生更多的模糊。*/
+    box-shadow: 0 0 120px 50px red;
+}
+.box .content{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-style: preserve-3d;
+}
+.box .content span{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#051515,red); /*创建一个表示两种或多种颜色线性渐变的图片*/
+    transform: rotateY(calc(90deg * var(--i))) translateZ(150px);
+}
+
+

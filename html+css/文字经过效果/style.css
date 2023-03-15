@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* 页面初始化 */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 这里的100vh是视口高度，加了，上面设置的垂直和水平居中效果才会生效 */
+    height: 100vh; 
+    font-family: 'Poppins',sans-serif;
+}
+
+/* 第二步 */
+h1{
+    margin: 0;
+    padding: 0;
+    font-size: 10em;
+    transition: 0.5s;
+}
+
+h1 span{
+    position: relative;
+    text-transform: uppercase; /*定义只有大写字母*/
+    display: block;
+    transition: 0.5s;
+}
+
+/* 第三步：用两个伪元素实现红线效果 */
+h1 span:nth-child(1)::before{
+    content: '';
+    position: absolute;
+    top: calc(50% - 15px);
+    right: 0;
+    width: 50%;
+    height: 30px;
+    background: #f00;
+    transform-origin: right;
+    transform: scale(0);
+    transition: 0.5s;
+    z-index: 1;
+}
+
+/* 为第一个伪元素添加hover效果 */
+h1:hover span:nth-child(1)::before{
+    transform: scaleX(1);
+}
+
+h1 span:nth-child(2)::before{
+    content: '';
+    position: absolute;
+    top: calc(50% - 15px);
+    left: 0;
+    width: 50%;
+    height: 30px;
+    background: #f00;
+    transform-origin: left;
+    transform: scale(0);
+    transition: 0.5s;
+    z-index: 1;
+}
+
+h1:hover span:nth-child(2)::before{
+    transform: scaleX(1);
+}
+
+/* 第四步：让两个hide标签在hover效果后隐藏（透明度实现） */
+h1 span hide{
+    transition: 0.5s;
+    /* transition-delay: 0.5s; */
+}
+h1:hover span hide{
+    transition-delay: 0.5s;
+    /* color: #f00; */
+    opacity: 0;
+}
+
+/* 第五步 */
+h1:hover span:nth-child(1) hide{
+    padding-right: 30px;
+}
+h1:hover span:nth-child(2) hide{
+    padding-right: 30px;
+}
